@@ -34,8 +34,8 @@ const App = () => {
 
      <div className='w-full'>
      <Routes>
-      <Route path='/' element={<Cantainer/>}/>
-      <Route path='/Home' element={<Home/>}/>
+      <Route path='/Cantainer' element={<Cantainer/>}/>
+      <Route path='/' element={<Home/>}/>
 
 
 

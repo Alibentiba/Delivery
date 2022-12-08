@@ -44,7 +44,7 @@ const LogOut = async()=>{
 
           <div className='flex items-center justify-centers gap-10'>
             <ul  className="flex items-center gap-12">
-           <Link to='/Home'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+           <Link to='/'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               Home
             </li>
             </Link>
@@ -63,13 +63,13 @@ const LogOut = async()=>{
             alt="Avatar" className='w-10 cursor-pointer rounded-full' />
 
             {menu && (
-              <div className='absolute z-50  h-auto flex-col items-start justify-start top-12 left-[-45px] gap-4 bg-slate-200 rounded-md pt-0'>
-              {user1 && user1.email ==="alibentiba1995@gmail.com"&&(<button className="hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">New Item <IoMdAdd/></button>
-             )}
+              <div className='absolute z-50  h-auto flex flex-col items-start justify-start top-12 left-[-45px]  bg-slate-200  mt-0'>
+              {user1 && user1.email ==="alibentiba1995@gmail.com"&&(<Link to='/Cantainer'><button className="hover:bg-slate-300 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">New Item <IoMdAdd/></button>
+              </Link>)}
  
-              {user1? (<button className="hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4" onClick={LogOut} >Logout<IoMdLogOut/></button>)
+              {user1? (<button className="hover:bg-slate-300 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4" onClick={LogOut} >Logout<IoMdLogOut/></button>)
  
-               :(              <button className="hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4" onClick={Singin} >Login<IoMdLogIn/></button>
+               :(<button className="hover:bg-slate-300 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4" onClick={Singin} >Login<IoMdLogIn/></button>
                )}
  
              </div>
