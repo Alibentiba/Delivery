@@ -57,7 +57,7 @@ const LogOut = async()=>{
                 Service</li>
 
             </ul>
-            <IoMdBasket className='text-3xl hover:cursor-pointer text-black'/>
+            <IoMdBasket className='text-4xl hover:cursor-pointer text-black'/>
             <div className='relative'>
             <img src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu)}}
             alt="Avatar" className='w-10 cursor-pointer rounded-full' />
