@@ -20,11 +20,7 @@ const Cantainer = () => {
         setisLaoding(true)
         const imgFile=e.target.file[0]
         setimageAsset(imgFile)
-
-
-
-
-    }
+          }
 
   return (
 <div className='w-full  flex  items-start justify-center h-auto p-10'>
@@ -56,10 +52,11 @@ const Cantainer = () => {
                  {!imageAsset ? 
 
                 <label className='w-full h-full '>  
-                  <div className='w-full h-full flex flex-col items-center justify-center cursor-pointer'>
+                   <div className='w-full h-full flex flex-col items-center justify-center cursor-pointer'>
                     <RiUploadCloud2Line className='w-10 h-10 text-gray-600'/>
                     <p className='text-gray-600 text-xl'>Click To uplaod img</p>
-                  </div>
+                     </div>
+
                     <input type="file"
                     name='uplaodimg'
                     accept='image/*'
@@ -94,17 +91,17 @@ const Cantainer = () => {
      <div  className='w-1/2  h-auto flex items-center justify-start  gap-2 md:w-full '>
         {/* <IoFastFood className='w-14 h-14 '/> */}
         <input type="text" placeholder='Price'
-        className='w-full h-20 outline-none border-[0.5px]  border-gray-300 text-2xl  text-gray-800 bg-slate-100 placeholder:text-gray-500 pl-4 rounded-sm '
-        value={Title}
-        onChange={e=>{setTitle(e.target.value)}}/>
+         className='w-full h-20 outline-none border-[0.5px]  border-gray-300 text-2xl  text-gray-800 bg-slate-100 placeholder:text-gray-500 pl-4 rounded-sm '
+         value={Title}
+         onChange={e=>{setTitle(e.target.value)}}/>
       </div>
     </div>
 
 
     <div className='w-full  h-auto flex items-center justify-end p-1 gap-2 '>
-    <button 
-        className='w-full h-14 border-[0.5px]  border-gray-300 bg-green-500 rounded-lg text-2xl font-medium text-gray-100 hover:text-white hover:bg-green-600 md:w-1/3'>
-        Save</button>
+        <button 
+         className='w-full h-14 border-[0.5px]  border-gray-300 bg-green-500 rounded-lg text-2xl font-medium text-gray-100 hover:text-white hover:bg-green-600 md:w-1/3'>Save
+        </button>
     </div>
 
 

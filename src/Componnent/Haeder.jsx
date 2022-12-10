@@ -63,13 +63,13 @@ const LogOut = async()=>{
             alt="Avatar" className='w-10 cursor-pointer rounded-full' />
 
             {menu && (
-              <div className='absolute z-50  h-auto flex flex-col items-start justify-start top-12 left-[-45px]  bg-slate-200  mt-0'>
-              {user1 && user1.email ==="alibentiba1995@gmail.com"&&(<Link to='/Cantainer'><button className="hover:bg-slate-300 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">New Item <IoMdAdd/></button>
+              <div className='absolute z-50  h-auto flex flex-col items-start justify-start top-12 left-[-93px]  bg-slate-100 py-0 mt-0 rounded-sm'>
+              {user1 && user1.email ==="alibentiba1995@gmail.com"&&(<Link to='/Cantainer'><button className="hover:bg-slate-200 text-black flex w-40 h-14    text-lg font-semibold items-center justify-start px-3  gap-4">New Item <IoMdAdd className='w-8 h-8'/></button>
               </Link>)}
  
-              {user1? (<button className="hover:bg-slate-300 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4" onClick={LogOut} >Logout<IoMdLogOut/></button>)
+              {user1? (<button className="hover:bg-slate-200 text-black flex w-40 h-14   text-lg font-semibold items-center justify-start px-3  gap-7 " onClick={LogOut} >Logout<IoMdLogOut className='w-8 h-8'/></button>)
  
-               :(<button className="hover:bg-slate-300 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4" onClick={Singin} >Login<IoMdLogIn/></button>
+               :(<button className="hover:bg-slate-200 text-black flex w-40 h-14  text-lg font-semibold items-center justify-start px-1 mt-2 gap-5" onClick={Singin} >Login<IoMdLogIn className='w-8 h-8'/></button>
                )}
  
              </div>
