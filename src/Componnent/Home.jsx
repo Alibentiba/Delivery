@@ -5,6 +5,7 @@ import I1 from './img/i1.png'
 import F1 from './img/f1.png'
 import c3 from './img/c3.png'
 import Fi1 from './img/fi1.png'
+import SliderComponent from './SliderComponent'
 
 
 const Home = () => {
@@ -27,12 +28,12 @@ const Home = () => {
                       <button className='bg-orange-400 w-full h-12 rounded-md text-white text-xl font-semibold md:w-1/3 hover:bg-orange-300'>Order Now</button>
         </div>
 
-        <div className='flex items-start justify-end px-10 '>
-            <img src={Herobg} alt="Herobg" className='w-full object-contain md:w-1/2' />
+        <div className='flex items-start justify-end px-1 '>
+            <img src={Herobg} alt="Herobg" className='w-full object-contain h-3/4 md:w-2/3' />
 
 
 
-         <div className='absolute top-[64rem] right-12 w-196  grid grid-cols-2 gap-20 md:top-[11rem] md:right-[5rem] md:gap-20'>
+         <div className='absolute top-[83rem] right-10 w-196  grid grid-cols-2 gap-x-2 gap-y-[6rem] md:top-[11rem] md:right-[5rem] md:gap-20'>
          <div className='w-44 pb-4 h-56 flex flex-col items-center justify-centers rounded-lg backdrop-blur-md bg-cardOverlay'>
                 <img src={I1} alt="I1" className='-mt-20 mb-10' />
                 <p className='text-black'>Icecream</p>
@@ -65,6 +66,7 @@ const Home = () => {
          </div>
             
         </div>
+        <SliderComponent/>
     </div>
   )
 }
