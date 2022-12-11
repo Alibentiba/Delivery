@@ -44,7 +44,7 @@ const LogOut = async()=>{
 
           <div className='flex items-center justify-centers gap-10'>
             <ul  className="flex items-center gap-12">
-           <Link to='/'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+           <Link to='/Dsf'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               Home
             </li>
             </Link>

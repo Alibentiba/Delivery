@@ -6,6 +6,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Cantainer from './Componnent/Cantainer';
 import Home from './Componnent/Home';
+import Dsf from './Componnent/Dsf';
 
 const App = () => {
   var user1=useSelector(state=>state.userstore.user)
@@ -27,7 +28,7 @@ const App = () => {
   return (
     <BrowserRouter>
 
-    <div className='w-screen h-auto gap-5  flex-col items-start justify-start text-cyan-600'>
+    <div className='w-screen h-auto gap-5  flex-col items-start justify-start  bg-gray-100'>
       
      <Haeder/>
      
@@ -36,6 +37,8 @@ const App = () => {
      <Routes>
       <Route path='/Cantainer' element={<Cantainer/>}/>
       <Route path='/' element={<Home/>}/>
+      <Route path='/Dsf' element={<Dsf/>}/>
+
 
 
 
