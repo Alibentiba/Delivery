@@ -11,7 +11,7 @@ const Haeder = () => {
   const [user,setUser]=useState(null)
   const [menu,setMenu]=useState(false)
 
-  var user1=useSelector(state=>state.userstore.user)
+  var user1=useSelector(state=>state.userStore.user)
   const dispatch=useDispatch()
  if(user1){console.log('The user1 informations ',user1.email)
 }
@@ -44,7 +44,7 @@ const LogOut = async()=>{
 
           <div className='flex items-center justify-centers gap-10'>
             <ul  className="flex items-center gap-12">
-           <Link to='/'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+           <Link to='/HH'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               Home
             </li>
             </Link>
@@ -64,7 +64,7 @@ const LogOut = async()=>{
 
             {menu && (
               <div className='absolute z-50  h-auto flex flex-col items-start justify-start top-12 left-[-93px]  bg-slate-100 py-0 mt-0 rounded-sm'>
-              {user1 && user1.email ==="alibentiba1995@gmail.com"&&(<Link to='/Cantainer'><button className="hover:bg-slate-200 text-black flex w-40 h-14    text-lg font-semibold items-center justify-start px-3  gap-4">New Item <IoMdAdd className='w-8 h-8'/></button>
+              {user1 && user1.email ==="bentibaali3@gmail.com"&&(<Link to='/Cantainer'><button className="hover:bg-slate-200 text-black flex w-40 h-14    text-lg font-semibold items-center justify-start px-2  gap-1">New Item <IoMdAdd className='w-8 h-8'/></button>
               </Link>)}
  
               {user1? (<button className="hover:bg-slate-200 text-black flex w-40 h-14   text-lg font-semibold items-center justify-start px-3  gap-7 " onClick={LogOut} >Logout<IoMdLogOut className='w-8 h-8'/></button>)

@@ -1,30 +1,32 @@
-// import React from 'react'
+
 import React, { Component } from "react";
-// import './brands.css'
+import './brands.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { heroData } from "../Utils/Data";
 import { IoMdBasket} from 'react-icons/io';
+import c1 from './img/c1.png'
+import { useDispatch, useSelector } from 'react-redux'
 
+  
+  const SliderComponent = () => {
+    const SliceProduct=useSelector(state=>state.userStore.Products)
 
-
-export default class SliderComponent extends Component {
-  render() {
     var settings = {
       dots: false,
       infinite: false,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 1,
-      initialSlide: 0,
+      initialSlide: 1,
       
     
       responsive: [
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
             infinite: true,
             dots: false
@@ -33,7 +35,7 @@ export default class SliderComponent extends Component {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 1,
             slidesToScroll: 1,
             initialSlide: 2
           }
@@ -48,53 +50,47 @@ export default class SliderComponent extends Component {
       ]
     };
     return (
-      <div className=" h-[380px]  w-screen  pl-10 pr-14  flex items-center justify-center bg-gray-300">
-        <Slider {...settings} className=" h-[380px] w-full ">
-          {heroData.map((item,index)=>{
+      <div className=" h-[280px]  w-screen    flex flex-col items-center justify-center ">
+                 <p className='text-2xl font-semibold w-full text-left after:border-solid '>Our Fresh & Healthy Fruits</p>
+
+        <Slider {...settings} className=" h-[280px] w-full ">
+          {SliceProduct?.map(({id,data:{title,price,calories,imageURL}})=>{
             return(
-              <div className="w-auto h-auto px-1 py-2  ">
+              <div key={id} className="w-auto h-auto px-1 py-2  ">
 
-              <div className="w-[400px] h-[360px] flex  flex-row items-start justify-start p-12 cursor-pointer hover:transition-transform	 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-500 ..." >
+              <div className="w-[400px] h-[260px] flex  flex-row items-start justify-start p-4 cursor-pointer hover:transition-transform	 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-500 ..." >
 
-                <div className="flex items-center justify-center w-full h-full rounded-lg backdrop-blur-md bg-cardOverlay ">
+                <div  className="flex items-center justify-center w-full h-full rounded-lg backdrop-blur-md bg-cardOverlay shadow-md ...">
 
                
-             <div className="w-1/2 h-full  rounded-xl">
-             <img src={item?.imageSrc} className="w-full  h-3/4 object-contain  " key={index}/>
+             <div className="w-full h-full  rounded-xl flex items-center justify-center px-3">
+               <img src={imageURL} />
              </div>
 
-              <div className="flex flex-col items-center justify-center w-1/2 h-full">
-                <div className="rounded-full hover:cursor-pointer bg-orange-400 p-2">
-                <IoMdBasket className='text-3xl '/>
+              <div className="flex flex-col items-start justify-start w-1/2 h-full">
+                <div className="rounded-full hover:cursor-pointer mb-10 mt-2 ml-14 bg-red-500 p-2">
+                <IoMdBasket className='text-3xl text-white '/>
 
                 </div>
 
-              <h1 className="w-full text-xl  text-center ">{item.name}</h1>
-              <p className="w-full text-lg  text-center ">Calories</p>
-              <p className="w-full text-lg  text-center ">{item.price} <span className="text-orange-500 font-semibold">$</span></p>
-              </div>
+                    <h1 className="w-full text-xl font-semibold  text-left ">{title}</h1>
+                    <p className="w-full text-lg  text-left text-gray-500" >{calories}  calories</p>
+                    <p className="w-full text-lg  text-left font-bold ">{price} <span className="text-orange-500 font-semibold">$</span></p>
+                  </div>
             
               </div>
 
             </div>
             </div>
   
-            )
-
-
-
-
-          })
-
-
-
-
-          }
+            )})}
        
           
         </Slider>
         </div>
       
-    );
+    )
   }
-}
+  
+  export default SliderComponent
+  

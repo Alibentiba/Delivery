@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 export const Slice = createSlice({
     name: "userStore",
-    initialState: {user:null,Channels:null,activeChannel:null},
+    initialState: {user:null,Products:null,ActiveCat:null},
    
     reducers: {
           LoginA: (state,action) => {
@@ -13,17 +13,17 @@ export const Slice = createSlice({
           
            
              },
-             getChannels:(state,action) => {
-              state.Channels=action.payload
+             fetchTostat:(state,action) => {
+              state.Products=action.payload
             
              
                }
-               ,setactiveChannel:(state,action)=>{
-                state.activeChannel=action.payload
+               ,setActiveCat:(state,action)=>{
+                state.ActiveCat=action.payload
                }
           
 
     }
 })
-export const {LoginA,Logout,getChannels,setactiveChannel} = Slice.actions
+export const {LoginA,Logout,fetchTostat,setActiveCat} = Slice.actions
 export default Slice.reducer
