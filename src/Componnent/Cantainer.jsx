@@ -131,7 +131,7 @@ const Cantainer = () => {
           
 
   return (
-<div className='w-full  flex  items-start justify-center h-auto p-10 bg-gray-100'>
+<div className='w-full  flex  items-start justify-center h-auto p-2 bg-gray-100'>
     <div className='w-full h-screen flex flex-col items-center justify-start bg-gray-200  gap-6 rounded-lg p-10 md:w-1/2 md:h-full '>
 
 
@@ -177,10 +177,10 @@ const Cantainer = () => {
                     className='w-0 h-0'/>
                </label>:(
 
-         <div className='w-full h-full flex flex-col items-center justify-start gap-4 p-4'>
+         <div className='w-full h-full flex flex-col items-center justify-start gap-4 p-1 '>
 
                     
-            <img  src={imageAsset} alt="profuct"  className='w-full h-3/4 object-cover rounded-lg'/>
+            <img  src={imageAsset} alt="profuct"  className='w-[150px] h-[150px] object-contain rounded-lg md:w-[400px] md:h-[230px]'/>
 
 
             <button onClick={deleteImage}
@@ -219,7 +219,7 @@ const Cantainer = () => {
 
     <div className='w-full  h-auto flex items-center justify-end p-1 gap-2 '>
         <button 
-         className='w-full h-14 border-[0.5px]  border-gray-300 bg-green-500 rounded-lg text-2xl font-medium text-gray-100 hover:text-white hover:bg-green-600 md:w-1/3'
+         className='w-full h-14 border-[0.5px]  border-gray-300 bg-green-500 rounded-md text-2xl font-medium text-gray-100 hover:text-white hover:bg-green-600 md:w-1/3'
          onClick={saveDetails}
          >Save
         </button>

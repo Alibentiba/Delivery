@@ -24,26 +24,26 @@ const App = () => {
     {id:doc.id,
     data:doc.data()})))
         })
+        if(Products){
+          dispatch(fetchTostat(Products))
+          console.log('The prodcts List are ',Products)
+        }
     },[])
 
 
 
-    if(Products){
-      dispatch(fetchTostat(Products))
-      console.log('The prodcts List are ',Products)}
+   
 
   useEffect(() => {
     const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
        if (user) {
-     
-      dispatch(LoginA(user))
-      console.log('the user information is',user)
-    
-    } else {
-      console.log('Makach')
-    }
-  });}, [dispatch]);
+      dispatch(LoginA({
+        displayName:user.displayName,
+        email:user.email,
+        photoURL:user.photoURL}
+        
+      ))}});}, [dispatch]);
   
   return (
     <BrowserRouter>

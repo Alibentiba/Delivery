@@ -59,7 +59,7 @@ const LogOut = async()=>{
             </ul>
             <IoMdBasket className='text-4xl hover:cursor-pointer text-black'/>
             <div className='relative'>
-            <img src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu)}}
+            <img src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu); setTimeout(() =>{setMenu(false)},2000);}}
             alt="Avatar" className='w-10 cursor-pointer rounded-full' />
 
             {menu && (
@@ -101,7 +101,7 @@ const LogOut = async()=>{
 
        
         <div className='md:hidden flex w-full h-full items-center justify-between '>
-        <IoMdBasket className='text-3xl hover:cursor-pointer text-black'/>
+        <IoMdBasket className='text-5xl hover:cursor-pointer text-black'/>
         <p className='absolute top-[30px] left-[80px] w-[18px] h-[18px] rounded-full text-xs flex items-center font-semibold justify-center bg-red-600 text-yellow-50'>3</p>
 
 
@@ -115,12 +115,12 @@ const LogOut = async()=>{
         <img src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu)}} alt="Avatar" className='w-10 cursor-pointer rounded-full' />
               
             {menu && (
-              <div className='absolute z-50  h-auto flex-col items-center justify-center top-12 left-[-25px]  bg-slate-300 '>
+              <div className='absolute z-50  h-auto flex-col items-center justify-center top-12 left-[-25px]  bg-slate-200 '>
               {
-              user1 && user1.email ==="alibentiba1995@gmail.com"&&(<button className=' hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-3'>New Item <IoMdAdd/></button>
+              user1 && user1.email ==="bentibaali3@gmail.com"&&(<Link to='/Cantainer'><button className=' hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-3'>New Item <IoMdAdd/></button></Link>
         )}
              <ul  className="flex-col items-center gap-24 ">
-             <Link to='/Home'> <li className="hover:bg-slate-400 text-black flex w-32  text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">
+             <Link to='/'> <li className="hover:bg-slate-400 text-black flex w-32  text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">
               Home
             </li></Link>
             <li className="hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">
