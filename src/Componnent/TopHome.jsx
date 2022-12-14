@@ -17,7 +17,7 @@ const TopHome = () => {
     
 
 
-    <div className='grid gap-y-3  grid-cols-1 md:grid-cols-2 md:h-1/2 py-4 px-4'>
+    <div className='grid gap-y-1  grid-cols-1 md:grid-cols-2 md:h-1/2 py-0 px-4'>
         <div className='px-4 flex flex-col items-start justify-start gap-1 pb-0  h-[800px] md:h-[700px]'>
             
             <p className='flex items-center justify-between px-2 h-20 w-full  bg-gradient-to-r from-orange-500 via-orange-200 to-orange-500  rounded-[50px] md:w-1/3 md:h-12  '> 
@@ -27,10 +27,10 @@ const TopHome = () => {
 
              <h1 className='text-7xl font-bold flex flex-col items-start justify-start gap-10 py-10 text-black '>
                   <span className='tracking-wider	'>The Fastest Delivery in</span>
-                  <span className='text-orange-500'>Your City</span>
+                  <span className='text-orange-500 '>Your City</span>
                    </h1>
 
-                  <p className='text-2xl py-4 px-1 text-gray-900  text-left md:text-lg'>Retail food delivery is a courier service in which a restaurant,
+                  <p className='text-xl py-0 px-0 text-gray-500  text-left md:text-base'>Retail food delivery is a courier service in which a restaurant,
                      store, or independent food-delivery company 
                      delivers food to a customer. An order is
                       typically made either through a restaurant 
@@ -43,7 +43,7 @@ const TopHome = () => {
 
 
 
-         <div className='absolute top-[66rem] right-[5.5rem] w-196  grid grid-cols-2 gap-x-7 gap-y-[7rem] md:top-[11rem] md:right-[5rem] md:gap-20'>
+         <div className='absolute top-[66rem] right-[7%] w-196  grid grid-cols-2 gap-x-7 gap-y-[7rem] md:top-[11rem] md:right-[5rem] md:gap-20'>
          <div className='w-44 pb-4 h-56 flex flex-col items-center justify-centers rounded-lg backdrop-blur-md bg-cardOverlay'>
                 <img src={I1} alt="I1" className='-mt-20 mb-10' />
                 <p className='text-black'>Icecream</p>
@@ -67,11 +67,10 @@ const TopHome = () => {
                </div>
 
                <div className='w-44 pb-4 h-56 flex flex-col items-center justify-centers rounded-lg backdrop-blur-md bg-cardOverlay'>
-             
-                <img src={Fi1} alt="I1" className='-mt-20 mb-10' />
-                <p className='text-black'>Icecream</p>
-                <p className='text-gray-500'>chocloat & vanilla</p>
-                <p className='text-black'>5.88 <span className='text-orange-500'>$</span></p>
+                  <img src={Fi1} alt="I1" className='-mt-20 mb-10' />
+                  <p className='text-black'>Icecream</p>
+                  <p className='text-gray-500'>chocloat & vanilla</p>
+                  <p className='text-black'>5.88 <span className='text-orange-500'>$</span></p>
                </div>
          </div>
        

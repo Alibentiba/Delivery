@@ -5,46 +5,40 @@ import avatar from './img/avatar.png'
 import {provider} from '../firebase'
 import { getAuth, signInWithPopup,signOut } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux'
-import {Logout} from '../Redux/Slice'
+import {Logout,setActivShoping} from '../Redux/Slice'
 import {Link} from 'react-router-dom'
+
+
 const Haeder = () => {
   const [user,setUser]=useState(null)
   const [menu,setMenu]=useState(false)
 
   var user1=useSelector(state=>state.userStore.user)
   const dispatch=useDispatch()
- if(user1){console.log('The user1 informations ',user1.email)
+  const Singin = async()=>{
+  const auth = getAuth();
+  setUser( await signInWithPopup(auth, provider))
+  console.log('The uers is',user)
 }
 
-
-
-   const Singin = async()=>{
-    const auth = getAuth();
-    setUser( await signInWithPopup(auth, provider))
-    console.log('The uers is',user)
-  
-}
 const LogOut = async()=>{
   const auth = getAuth();
   signOut(auth)
- dispatch(Logout())
-
-
+  dispatch(Logout())
 }
 
  
   return (
-    <div className='   md:w-screen  p-6 px-16 flex items-center justify-between '>
+    <div className=' fixed top-0 z-50 w-screen  p-6 px-16 flex items-center justify-between bg-Primary '>
         <div className='hidden md:flex w-full h-full items-center justify-between'>
 
           <div className='flex items-center justify-center gap-2'>
-          <Link to='/'><img src='https://seeklogo.com/images/F/free-delivery-logo-3F8F5B428D-seeklogo.com.png' alt="Logo" className='w-20 object-cover' /></Link>
-            <p className='text-headingColor text-xl font-bold'>City</p>
+          <Link to='/'><img src={Logo} alt="Logo" className='w-10 object-cover' /></Link>
           </div>
 
           <div className='flex items-center justify-centers gap-10'>
             <ul  className="flex items-center gap-12">
-           <Link to='/HH'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+           <Link to='/ShopingCart'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               Home
             </li>
             </Link>
@@ -57,7 +51,7 @@ const LogOut = async()=>{
                 Service</li>
 
             </ul>
-            <IoMdBasket className='text-4xl hover:cursor-pointer text-black'/>
+            <IoMdBasket onClick={()=>{dispatch(setActivShoping(true))}} className='text-4xl hover:cursor-pointer text-black'/>
             <div className='relative'>
             <img src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu); setTimeout(() =>{setMenu(false)},2000);}}
             alt="Avatar" className='w-10 cursor-pointer rounded-full' />
@@ -101,7 +95,7 @@ const LogOut = async()=>{
 
        
         <div className='md:hidden flex w-full h-full items-center justify-between '>
-        <IoMdBasket className='text-5xl hover:cursor-pointer text-black'/>
+        <IoMdBasket onClick={()=>{dispatch(setActivShoping(true))}} className='text-5xl hover:cursor-pointer text-black'/>
         <p className='absolute top-[30px] left-[80px] w-[18px] h-[18px] rounded-full text-xs flex items-center font-semibold justify-center bg-red-600 text-yellow-50'>3</p>
 
 
@@ -120,7 +114,7 @@ const LogOut = async()=>{
               user1 && user1.email ==="bentibaali3@gmail.com"&&(<Link to='/Cantainer'><button className=' hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-3'>New Item <IoMdAdd/></button></Link>
         )}
              <ul  className="flex-col items-center gap-24 ">
-             <Link to='/'> <li className="hover:bg-slate-400 text-black flex w-32  text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">
+             <Link to='/ShopingCart'> <li className="hover:bg-slate-400 text-black flex w-32  text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">
               Home
             </li></Link>
             <li className="hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">

@@ -11,19 +11,17 @@ const Categories = () => {
 
 
   return (
-    <div className='flex items-center justify-center gap-6 mt-20 mb-10 overflow-x-hidden scroll-auto'>
+    <div className=' w-full grid grid-cols-3 pl-10 gap-y-4  mt-20 mb-10 md:grid-cols-8 md:pl-20'>
         {categories?.map((item)=>{
             return(
                 <div
                  key={item?.id}  
                 onClick={()=>{setActive(item?.name)
                   dispatch(setActiveCat(item?.name))}} 
-
                  className={` w-28 h-24 cursor-pointer rounded-lg flex flex-col items-center justify-center  ${active!==item?.name?'backdrop-blur-md bg-white shadow-sm hover:bg-red-500':'bg-red-500 '} `}>
-
                   <div 
                   className={`rounded-full  p-2  ${active==item?.name? 'bg-white':'bg-red-500'}`}>
-                  <IoFastFoodSharp className={`text-4xl    ${active==item.name?'text-black':'text-white'} `} />
+                  <IoFastFoodSharp className={`text-4xl ${active==item.name?'text-black':'text-white'} `} />
                   </div>
 
                   <p className={`${active==item.name?'text-white':'text-black'} `} >{item?.name}</p>

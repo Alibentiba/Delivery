@@ -44,7 +44,7 @@ const Cantainer = () => {
         
      const uploadImage = (e) => {
      const imageFile = e.target.files[0];
-    const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
+    const storageRef = ref(storage, `images/${Math.floor(Math.random() * 100)}-${imageFile.name}`);
     const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
     uploadTask.on(
@@ -61,7 +61,11 @@ const Cantainer = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setimageAsset(downloadURL);
+          
           setTimeout(() => 4000);
+          if(imageAsset){setisLaoding(false)
+          console.log('The image Asset is',imageAsset)}
+          
         });
       }
     );
@@ -89,7 +93,7 @@ const Cantainer = () => {
             if (title || calories || imageAsset || price || category) {
            
                 const data = {
-                  id: `${Date.now()}`,
+                  id: `${Math.floor(Math.random() * 100)}`,
                   title: title,
                   imageURL: imageAsset,
                   category: category,
@@ -105,30 +109,6 @@ const Cantainer = () => {
 
         
           }
-
-
-
-        
-
-            
-                 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
 
   return (
 <div className='w-full  flex  items-start justify-center h-auto p-2 bg-gray-100'>
@@ -160,11 +140,15 @@ const Cantainer = () => {
 
     <div className='w-full h-420  flex items-center justify-center rounded-sm border-dotted border-2 border-gray-300 md:h-340'>
         {/* {isLaoding?<Laoder/>:( */}
-        {/* <> */}
 
-                 {!imageAsset? 
 
-                <label className='w-full h-full '>  
+
+     
+
+                { !imageAsset? 
+                
+
+                <label className='w-full h-full ' onClick={()=>{setisLaoding(!isLaoding)}}>  
                    <div className='w-full h-full flex flex-col items-center justify-center cursor-pointer'>
                     <RiUploadCloud2Line className='w-10 h-10 text-gray-600'/>
                     <p className='text-gray-600 text-xl'>Click To uplaod img</p>
@@ -175,27 +159,29 @@ const Cantainer = () => {
                     accept='image/*'
                     onChange={uploadImage}
                     className='w-0 h-0'/>
-               </label>:(
+               </label>
+                :
 
-         <div className='w-full h-full flex flex-col items-center justify-start gap-4 p-1 '>
-
-                    
-            <img  src={imageAsset} alt="profuct"  className='w-[150px] h-[150px] object-contain rounded-lg md:w-[400px] md:h-[230px]'/>
-
+             <div  className='w-full h-full flex flex-col items-center justify-start gap-4 p-1 '>    
+               <img  src={imageAsset} alt="profuct"  className='w-[150px] h-[150px] object-contain rounded-lg md:w-[400px] md:h-[230px]'/>
 
             <button onClick={deleteImage}
             className='w-36 h-10 border-[0.5px]  border-gray-300 bg-white rounded-lg text-xl font-medium text-red-500 hover:text-white hover:bg-red-500'>Delete
             </button>
          </div>
+         
+                }
+         </div> 
+         
 
 
-        ) }
+         
         
 
 
 
 
-    </div>
+
     
 
     <div className='w-full  h-auto flex items-start justify-center  gap-2 '>
@@ -221,6 +207,7 @@ const Cantainer = () => {
         <button 
          className='w-full h-14 border-[0.5px]  border-gray-300 bg-green-500 rounded-md text-2xl font-medium text-gray-100 hover:text-white hover:bg-green-600 md:w-1/3'
          onClick={saveDetails}
+         disabled={!imageAsset}
          >Save
         </button>
     </div>
