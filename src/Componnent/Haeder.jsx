@@ -14,6 +14,8 @@ const Haeder = () => {
   const [menu,setMenu]=useState(false)
 
   var user1=useSelector(state=>state.userStore.user)
+  var basket=useSelector(state=>state.userStore.basket)
+
   const dispatch=useDispatch()
   const Singin = async()=>{
   const auth = getAuth();
@@ -78,7 +80,7 @@ const LogOut = async()=>{
 
 
             </div>
-            <p className='absolute top-[30px] right-[140px] w-[18px] h-[18px] rounded-full text-xs flex items-center font-semibold justify-center bg-red-600 text-yellow-50'>3</p>
+            <p className='absolute top-[30px] right-[140px] w-[18px] h-[18px] rounded-full text-xs flex items-center font-semibold justify-center bg-red-600 text-yellow-50'>{basket?.length}</p>
         
 
 
@@ -96,7 +98,7 @@ const LogOut = async()=>{
        
         <div className='md:hidden flex w-full h-full items-center justify-between '>
         <IoMdBasket onClick={()=>{dispatch(setActivShoping(true))}} className='text-5xl hover:cursor-pointer text-black'/>
-        <p className='absolute top-[30px] left-[80px] w-[18px] h-[18px] rounded-full text-xs flex items-center font-semibold justify-center bg-red-600 text-yellow-50'>3</p>
+        <p className='absolute top-[30px] left-[80px] w-[18px] h-[18px] rounded-full text-xs flex items-center font-semibold justify-center bg-red-600 text-yellow-50'>{basket?.length}</p>
 
 
         <div className='flex items-center justify-center gap-2'>

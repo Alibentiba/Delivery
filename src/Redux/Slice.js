@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 export const Slice = createSlice({
     name: "userStore",
     initialState: {
+      basket:[],
       user:null,
       Products:null,
       ActiveCat:null,
       ActivShoping:false,
-      basket:null},
+     },
    
     reducers: {
           LoginA: (state,action) => {
@@ -31,16 +32,21 @@ export const Slice = createSlice({
 
                },
                SetTobasket :(state,action) => {
-                               
-                state.basket= state.basket.push(action.payload)
-                
+                const newCart = [...state.basket, action.payload]
+                  return { ...state, basket: newCart}
+                },
+
+                  SetbasketNull :(state,action) => {
+                    state.basket=null}
+       
+              
                 
             
                
-                 },
+                
           
 
     }
 })
-export const {LoginA,Logout,fetchTostat,setActiveCat,setActivShoping,SetTobasket} = Slice.actions
+export const {LoginA,Logout,fetchTostat,setActiveCat,setActivShoping,SetTobasket,SetbasketNull} = Slice.actions
 export default Slice.reducer

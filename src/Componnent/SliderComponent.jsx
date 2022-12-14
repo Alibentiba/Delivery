@@ -5,14 +5,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { IoMdBasket} from 'react-icons/io';
-import {useSelector } from 'react-redux'
+import {SetTobasket} from '../Redux/Slice'
+import {useDispatch,useSelector } from 'react-redux'
 
   
   const SliderComponent = () => {
     const SliceProducts=useSelector(state=>state.userStore.Products)
-    const results = SliceProducts?.filter(obj => {
-      return obj?.data.category.toUpperCase() ==='fruits'.toUpperCase();
-    })
+    const dispatch = useDispatch()
+
     var settings = {
       dots: false,
       infinite: false,
@@ -54,7 +54,8 @@ import {useSelector } from 'react-redux'
                  <p className='text-3xl  px-12 font-semibold w-full text-left after:border-solid '>Our Fresh & Healthy Fruits</p>
 
         <Slider {...settings} className=" h-[270px]   w-full ">
-          {results?.map(({id,data:{title,price,calories,imageURL}})=>{
+          {SliceProducts?.map(({id,data:{title,price,calories,imageURL}})=>{
+            const item ={id,data:{title,price,calories,imageURL}}
             return(
               <div key={id} className="w-auto h-auto px-1 py-2  ">
 
@@ -69,7 +70,7 @@ import {useSelector } from 'react-redux'
 
               <div className="flex flex-col items-start justify-start w-1/2 h-full">
                 <div className="rounded-full hover:cursor-pointer mb-10 mt-2 ml-14 bg-red-500 p-2">
-                <IoMdBasket className='text-xl text-white '/>
+                <IoMdBasket onClick={()=>dispatch(SetTobasket(item))} className='text-xl text-white '/>
 
                 </div>
 

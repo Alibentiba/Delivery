@@ -30,7 +30,7 @@ const App = () => {
         }
         
 
-    },[])
+    },[Products])
 
   useEffect(() => {
     const auth = getAuth();

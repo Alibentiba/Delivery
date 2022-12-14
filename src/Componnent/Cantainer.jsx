@@ -111,7 +111,7 @@ const Cantainer = () => {
           }
 
   return (
-<div className='w-full  flex  items-start justify-center h-auto p-2 bg-gray-100'>
+<div className='w-full mt-[5.5rem] flex  items-start justify-center h-auto p-2 bg-gray-100'>
     <div className='w-full h-screen flex flex-col items-center justify-start bg-gray-200  gap-6 rounded-lg p-10 md:w-1/2 md:h-full '>
 
 

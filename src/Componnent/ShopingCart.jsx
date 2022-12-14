@@ -4,14 +4,15 @@ import { IoNuclear } from 'react-icons/io5';
 import c2 from './img/c2.png'
 import Caremp from './img/emptyCart.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import {setActivShoping} from '../Redux/Slice'
+import {setActivShoping,SetbasketNull} from '../Redux/Slice'
 
 
 const ShopingCart = () => {
-    const [Statlenst, setStatlenst] = useState(55)
     const dispatch=useDispatch()
     var ActiveCart=useSelector(state=>state.userStore.ActivShoping)
-    
+    const ProductCart=useSelector(state=>state.userStore.basket)
+    const ProductCartLenght=ProductCart?.length
+
 
 
 
@@ -19,26 +20,31 @@ const ShopingCart = () => {
 
   return (
     <div className={`fixed right-0 z-50 top-0 delay-6000 ease-linear ${ActiveCart? 'visible':'hidden'}`}>
-{ Statlenst?
+{ProductCartLenght?
+
  <div className='w-screen bg-cartBg h-screen px-1 py-1  flex flex-col items-center justify-start md:w-[30rem]'>
         <div className='w-full bg-gray-700 flex items-center justify-between px-3 py-8 rounded-lg text-white'>
             <FaArrowLeft onClick={()=>{dispatch(setActivShoping(false)); ActiveCart=false}} className='text-2xl cursor-pointer'/>
             <p className='font-semibold text-xl cursor-pointer'>Cart</p>
-            <button onClick={()=>{setStatlenst(null)}}
+            <button onClick={()=>{dispatch(SetbasketNull())}}
               className='flex items-center justify-center gap-1 text-lg text-black bg-gray-100 px-3 py-[6px] rounded-lg'>
               Clear <IoNuclear/>
             </button>
         </div>
-
-        <div className='h-72 w-full  rounded-lg flex flex-col items-center justify-start py-3 px-2 overflow-y-hidden'>
-
-            <div className='bg-gray-700 h-20 w-full flex items-center justify-between rounded-lg py-1 px-3'>
+         
+       
+        
+        <div className='max-h-72 scroll-smooth	 w-full  rounded-lg flex flex-col items-center gap-2 justify-start py-3 px-2 overflow-y-hidden'>
+        
+         {ProductCart?.map(({id,data:{title,price,calories,imageURL}})=>{
+            return(
+            <div key={id} className='bg-gray-700 h-24 w-full flex items-center justify-between rounded-lg py-1 px-3'>
                 
                 <div className='w-1/4 flex h-full items-center justify-center gap-2'>
-                    <img src={c2} alt="" className='w-1/2 h-full object-contain' />
+                    <img src={imageURL} alt="" className='w-1/2 h-full object-contain' />
                     <p className='flex flex-col text-white '>
-                      <span>Mango</span> 
-                      <span>$ 33</span> 
+                      <span>{title}</span> 
+                      <span>$ {price}</span> 
                     </p>
                 </div>
 
@@ -50,7 +56,7 @@ const ShopingCart = () => {
 
 
 
-            </div>
+            </div>)})}
 
         </div>
         <div className='bg-cartTotal opacity-70 w-full rounded-2xl h-1/2 flex flex-col items-center justify-start px-9'>
