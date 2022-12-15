@@ -4,14 +4,15 @@ import { IoNuclear } from 'react-icons/io5';
 import c2 from './img/c2.png'
 import Caremp from './img/emptyCart.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import {setActivShoping,SetbasketNull,SetTobasket} from '../Redux/Slice'
+import {setActivShoping,SetbasketNull,SetTobasket,Dirncer} from '../Redux/Slice'
 
 
 const ShopingCart = () => {
     const dispatch=useDispatch()
     var ActiveCart=useSelector(state=>state.userStore.ActivShoping)
-    const basket=useSelector(state=>state.userStore.basket)
-    var BasketLength=basket?.length
+    const Basket=useSelector(state=>state.userStore.basket)
+    var BasketLength=Basket?.length
+    console.log('the basket items',Basket)
 
    const ClearCart =()=>{
         BasketLength=null;
@@ -38,11 +39,14 @@ const ShopingCart = () => {
          
        
         
-        <div className='w-full min-h-[340px]  rounded-lg flex flex-col items-center gap-2 justify-start py-3  overflow-y-scroll  scrollbar-hide' >
         
-         {basket?.map(({id,data:{title,price,calories,imageURL,Qty}},index)=>{
-            const item ={id,data:{title,price,calories,imageURL,Qty}}
-            return(
+        <div className='w-full min-h-[340px]  rounded-lg flex flex-col items-center gap-2 justify-start py-3  overflow-y-scroll  scrollbar-hide' >
+      
+        {Basket?.map(({id,data:{title,price,calories,imageURL,Qty}},index)=>{
+              const item={id,data:{title,price,calories,imageURL,Qty}}
+              
+
+           return(
             <div key={index} className='bg-gray-700 h-[85px] w-full flex items-center justify-between rounded-lg py-1 px-3'>
                 
                 <div className='w-28 flex h-[85px] items-center justify-center  gap-2'>
@@ -54,9 +58,9 @@ const ShopingCart = () => {
                 </div>
 
                 <div className='flex items-center justify-center text-white gap-2 text-2xl'>
-                    <p className='cursor-pointer'onClick={()=>dispatch(SetTobasket({item,Stuts:0}))}>-</p>
+                    <p className='cursor-pointer'onClick={()=>dispatch(Dirncer(item))} >-</p>
                     <p className='bg-slate-600  w-14 h-14 flex items-center justify-center rounded-full p-[2px] cursor-pointer'>{Number(Qty)}</p>
-                    <p className='cursor-pointer'onClick={()=>dispatch(SetTobasket({item,Stuts:1}))} >+</p>
+                    <p className='cursor-pointer'onClick={()=>dispatch(SetTobasket(item))} >+</p>
                 </div>
 
 
@@ -65,7 +69,7 @@ const ShopingCart = () => {
 
         </div>
 
-        <div className='bg-cartTotal opacity-70 w-full rounded-2xl h-1/2 flex flex-col items-center justify-start px-9'>
+        <div className='bg-cartTotal opacity-70 w-full rounded-2xl h-1/3 flex flex-col items-center justify-start px-9 md:h-1/2'>
            
             <div className='flex flex-col w-full h-1/2  items-center justify-center border-b-[1px] border-gray-300'>
                 <p className=' text-xl flex items-center py-2 w-full justify-between text-gray-200'>
@@ -82,7 +86,7 @@ const ShopingCart = () => {
 
             </div>
 
-            <div className='flex flex-col w-full h-[360px]  items-center justify-center gap-8 '>
+            <div className='flex flex-col w-full h-[360px]  items-center justify-center gap-4 '>
 
                 <p className=' text-xl font-semibold flex items-center  py-2 w-full justify-between text-white'>
                         <span>Total</span>

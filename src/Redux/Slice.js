@@ -32,53 +32,38 @@ export const Slice = createSlice({
 
                },
                SetTobasket :(state,action) => {
+                console.log('The action py',action.payload)
                 
-                const itemIndex =state.basket.findIndex((item)=>item.id===action.payload.item.id)
+                const itemIndex =state.basket.findIndex((item)=>item.id===action.payload.id)
               if(itemIndex>=0){
-                if(action.payload.Stuts===1)
-
-
-          {    var D=  parseInt(state.basket[itemIndex].data.Qty)
-              D+=1
-              state.basket[itemIndex].data.Qty=D}
-
-
-              else{
-                
-              var D=  parseInt(state.basket[itemIndex].data.Qty)
-              D-=1
+             var D= parseInt(state.basket[itemIndex].data.Qty)
+              D++
+              
               state.basket[itemIndex].data.Qty=D
-
-              }
-              }else{
-                const temP={...action.payload.item,Qty:1}
+            }
+              
+              else{
+              var Tp ={...action.payload,Qty:parseInt(action.payload.data.Qty)}
+                const temP={...Tp,Qty:1}
                 state.basket.push(temP);
               }
                 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
+        
                 },
+
+                Dirncer :(state,action) => {
+                  console.log('The action py',action.payload)
+                  
+                  const itemIndex =state.basket.findIndex((item)=>item.id===action.payload.id)
+                if(itemIndex>=0){
+               var D= parseInt(state.basket[itemIndex].data.Qty)
+                D--
+                
+                state.basket[itemIndex].data.Qty=D
+              }
+            },
+                
+  
 
                   SetbasketNull :(state,action) => {
                     state.basket=action.payload},
@@ -98,5 +83,5 @@ export const Slice = createSlice({
 
     }
 })
-export const {LoginA,Logout,fetchTostat,setActiveCat,setActivShoping,SetTobasket,SetbasketNull,setQty} = Slice.actions
+export const {LoginA,Logout,fetchTostat,setActiveCat,setActivShoping,SetTobasket,SetbasketNull,Dirncer} = Slice.actions
 export default Slice.reducer

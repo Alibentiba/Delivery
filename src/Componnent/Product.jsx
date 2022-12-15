@@ -7,11 +7,12 @@ import {SetTobasket,SetbasketNull} from '../Redux/Slice'
 const Product = ({id,data:{title,price,calories,imageURL,Qty}}) => {
  
   const item={id,data:{title,price,calories,imageURL,Qty}}
+
   
  
 
   const dispatch = useDispatch()
-  var Stuts
+
   return (
     
       
@@ -24,7 +25,7 @@ const Product = ({id,data:{title,price,calories,imageURL,Qty}}) => {
                 <div className="flex flex-col items-start justify-start w-1/2 h-full ">
                     <div className="rounded-full  mb-10 mt-2 mr-10 bg-red-500 p-2">
                   
-                    <IoMdBasket onClick={()=>dispatch(SetTobasket({item,Stuts:1}))} className='text-xl text-white cursor-pointer '/>
+                    <IoMdBasket onClick={()=>dispatch(SetTobasket(item))} className='text-xl text-white cursor-pointer '/>
                 </div>
 
                 <h1 className="w-full text-xl font-semibold  text-left capitalize ">{title}</h1>
