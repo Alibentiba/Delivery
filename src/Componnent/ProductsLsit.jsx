@@ -3,10 +3,7 @@ import Product from './Product'
 import { useSelector } from 'react-redux'
 
 const ProductsLsit = () => {
-
     const SliceProduct=useSelector(state=>state.userStore.Products)
-    // console.log('The producte liste is ',SliceProduct)
-
   return (
 <div className='w-full grid min-h-[100rem]  grid-cols-1 px-5 gap-y-[4.5rem] md:grid-cols-4 md:px-2 md:gap-y-[0px]  md:gap-x-1 py-2'>
 

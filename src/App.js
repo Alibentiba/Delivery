@@ -23,14 +23,11 @@ const App = () => {
     data:doc.data()})))})
 
         if(Products){
-          
-          localStorage.setItem('ProductsLocal', JSON.stringify(Products));
-          const ProductsLocal = JSON.parse(localStorage.getItem('ProductsLocal'));
-          dispatch(fetchTostat(ProductsLocal))
+          dispatch(fetchTostat(Products))
         }
         
+    },[])
 
-    },[Products])
 
   useEffect(() => {
     const auth = getAuth();
@@ -42,6 +39,17 @@ const App = () => {
         photoURL:user.photoURL}
       ))}});}, [dispatch]);
   
+
+
+
+
+
+
+      
+
+
+
+
   return (
     <BrowserRouter>
     <div className='w-screen gap-0  flex-col items-center justify-start bg-Primary'>
@@ -60,3 +68,9 @@ const App = () => {
 }
 
 export default App
+
+
+
+
+
+

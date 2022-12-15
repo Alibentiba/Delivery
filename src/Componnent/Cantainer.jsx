@@ -98,7 +98,7 @@ const Cantainer = () => {
                   imageURL: imageAsset,
                   category: category,
                   calories: calories,
-                  qty: 1,
+                  Qty:'0',
                   price: price,
                 }
                 e.preventDefault();

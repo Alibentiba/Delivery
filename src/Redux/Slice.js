@@ -32,12 +32,62 @@ export const Slice = createSlice({
 
                },
                SetTobasket :(state,action) => {
-                const newCart = [...state.basket, action.payload]
-                  return { ...state, basket: newCart}
+                
+                const itemIndex =state.basket.findIndex((item)=>item.id===action.payload.item.id)
+              if(itemIndex>=0){
+                if(action.payload.Stuts===1)
+
+
+          {    var D=  parseInt(state.basket[itemIndex].data.Qty)
+              D+=1
+              state.basket[itemIndex].data.Qty=D}
+
+
+              else{
+                
+              var D=  parseInt(state.basket[itemIndex].data.Qty)
+              D-=1
+              state.basket[itemIndex].data.Qty=D
+
+              }
+              }else{
+                const temP={...action.payload.item,Qty:1}
+                state.basket.push(temP);
+              }
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
                 },
 
                   SetbasketNull :(state,action) => {
-                    state.basket=null}
+                    state.basket=action.payload},
+                    updatebasket:(state,action)=>{
+                        state.basket=action.payload
+
+                    },
+                    
+
        
               
                 
@@ -48,5 +98,5 @@ export const Slice = createSlice({
 
     }
 })
-export const {LoginA,Logout,fetchTostat,setActiveCat,setActivShoping,SetTobasket,SetbasketNull} = Slice.actions
+export const {LoginA,Logout,fetchTostat,setActiveCat,setActivShoping,SetTobasket,SetbasketNull,setQty} = Slice.actions
 export default Slice.reducer
