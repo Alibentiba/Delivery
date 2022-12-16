@@ -5,6 +5,7 @@ import c2 from './img/c2.png'
 import Caremp from './img/emptyCart.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import {setActivShoping,SetbasketNull,SetTobasket,Dirncer} from '../Redux/Slice'
+import FadeIn from 'react-fade-in';
 
 
 const ShopingCart = () => {
@@ -12,7 +13,6 @@ const ShopingCart = () => {
     var ActiveCart=useSelector(state=>state.userStore.ActivShoping)
     const Basket=useSelector(state=>state.userStore.basket)
     var BasketLength=Basket?.length
-    console.log('the basket items',Basket)
 
    const ClearCart =()=>{
         BasketLength=null;
@@ -22,11 +22,13 @@ const ShopingCart = () => {
 
     
   return (
+   
+
     
     <div className={`fixed right-0 z-50 top-0 delay-6000 ease-linear ${ActiveCart? 'visible':'hidden'}`}>
 {BasketLength?
-
-( <div className='w-screen bg-cartBg h-screen px-1 py-1  flex flex-col items-center justify-start md:w-[30rem]'>
+ 
+( <FadeIn><div className='w-screen bg-cartBg h-screen px-1 py-1  flex flex-col items-center justify-start md:w-[30rem]'>
         <div className='w-full bg-gray-700 flex items-center justify-between px-3 py-8 rounded-lg text-white'>
             <FaArrowLeft onClick={()=>{dispatch(setActivShoping(!ActiveCart))}} className='text-2xl cursor-pointer'/>
             <p className='font-semibold text-xl cursor-pointer'>Cart</p>
@@ -42,12 +44,13 @@ const ShopingCart = () => {
         
         <div className='w-full min-h-[340px]  rounded-lg flex flex-col items-center gap-2 justify-start py-3  overflow-y-scroll  scrollbar-hide' >
       
-        {Basket?.map(({id,data:{title,price,calories,imageURL,Qty}},index)=>{
-              const item={id,data:{title,price,calories,imageURL,Qty}}
+        {Basket?.map(({id,data:{title,price,calories,imageURL,qty}})=>{
+              const item={id,data:{title,price,calories,imageURL,qty}}
               
 
            return(
-            <div key={index} className='bg-gray-700 h-[85px] w-full flex items-center justify-between rounded-lg py-1 px-3'>
+            <FadeIn className='w-full' key={id}>
+            <div  className='bg-gray-700 h-[85px] w-full flex items-center justify-between rounded-lg py-1 px-3'>
                 
                 <div className='w-28 flex h-[85px] items-center justify-center  gap-2'>
                     <img src={imageURL} alt="" className='w-1/2 h-full object-contain' />
@@ -59,13 +62,13 @@ const ShopingCart = () => {
 
                 <div className='flex items-center justify-center text-white gap-2 text-2xl'>
                     <p className='cursor-pointer'onClick={()=>dispatch(Dirncer(item))} >-</p>
-                    <p className='bg-slate-600  w-14 h-14 flex items-center justify-center rounded-full p-[2px] cursor-pointer'>{Number(Qty)}</p>
+                    <p className='bg-slate-600  w-14 h-14 flex items-center justify-center rounded-full p-[2px] cursor-pointer'>{String(qty)}</p>
                     <p className='cursor-pointer'onClick={()=>dispatch(SetTobasket(item))} >+</p>
                 </div>
 
 
 
-            </div>)})}
+            </div></FadeIn>)})}
 
         </div>
 
@@ -100,7 +103,8 @@ const ShopingCart = () => {
         </div>
     
       
-    </div>):
+    </div>
+    </FadeIn>):
 
     (<><div className='w-[26rem] bg-white h-screen flex flex-col items-center justify-start gap-28 py-3'>
        
@@ -119,6 +123,7 @@ const ShopingCart = () => {
     }
 
 </div>
+
   )
 }
 

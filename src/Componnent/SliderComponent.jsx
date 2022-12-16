@@ -65,7 +65,7 @@ import {useDispatch,useSelector } from 'react-redux'
 
                
              <div className="w-full h-full  rounded-xl flex items-center justify-center px-3">
-               <img src={imageURL} />
+               <img src={imageURL} className='h-full' />
              </div>
 
               <div className="flex flex-col items-start justify-start w-1/2 h-full">

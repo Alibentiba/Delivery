@@ -85,20 +85,21 @@ const Cantainer = () => {
    
     
 
+  var X=1
 
 
       const saveDetails = (e) => {
         if(imageAsset){
             console.log('The sdsdqdfqsd',imageAsset)
             if (title || calories || imageAsset || price || category) {
-           
+  
                 const data = {
                   id: `${Math.floor(Math.random() * 100)}`,
                   title: title,
                   imageURL: imageAsset,
                   category: category,
                   calories: calories,
-                  Qty:'0',
+                  qty:'1',
                   price: price,
                 }
                 e.preventDefault();
@@ -109,7 +110,7 @@ const Cantainer = () => {
 
         
           }
-
+  
   return (
 <div className='w-full mt-[5.5rem] flex  items-start justify-center h-auto p-2 bg-gray-100'>
     <div className='w-full h-screen flex flex-col items-center justify-start bg-gray-200  gap-6 rounded-lg p-10 md:w-1/2 md:h-full '>
@@ -127,11 +128,11 @@ const Cantainer = () => {
 
     <div className='w-full  h-20 flex items-center justify-start px-1 py-0  bg-white  rounded-sm border-[0.5px]  border-gray-300 text-2xl md:w-1/2 md:h-16'>
         <select onChange={e=>{setcategorie(e.target.value)}} name="categories"      
-           className='w-full flex gap-2/3 h-full outline-none   text-gray-800 bg-white md:20 '>
+           className='w-full flex gap-2/3 h-full outline-none   text-gray-800 bg-white md:20 cursor-pointer'>
             <option className='w-1/2' value="Other" disabled>Select Categories </option>
             {categories.map((item)=>{
                 return(
-                    <option className='w-1/2' key={item.id} value={item.urlParamName}> {item.name}</option>
+                    <option className='w-1/2 relative z-40 cursor-pointer' key={item.id} value={item.urlParamName}> {item.name}</option>
                   )})}
         </select>
     </div>

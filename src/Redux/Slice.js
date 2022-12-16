@@ -31,37 +31,39 @@ export const Slice = createSlice({
                 state.ActivShoping=action.payload
 
                },
+
                SetTobasket :(state,action) => {
                 console.log('The action py',action.payload)
                 
                 const itemIndex =state.basket.findIndex((item)=>item.id===action.payload.id)
               if(itemIndex>=0){
-             var D= parseInt(state.basket[itemIndex].data.Qty)
-              D++
-              
-              state.basket[itemIndex].data.Qty=D
-            }
-              
-              else{
-              var Tp ={...action.payload,Qty:parseInt(action.payload.data.Qty)}
-                const temP={...Tp,Qty:1}
+               var D= parseInt(state.basket[itemIndex].data.qty)
+               D++
+               state.basket[itemIndex].data.qty=D
+            }else{
+                const temP={...action.payload,qty:1}
                 state.basket.push(temP);
               }
-                
-        
-                },
+             },
+
+
+
 
                 Dirncer :(state,action) => {
                   console.log('The action py',action.payload)
-                  
-                  const itemIndex =state.basket.findIndex((item)=>item.id===action.payload.id)
-                if(itemIndex>=0){
-               var D= parseInt(state.basket[itemIndex].data.Qty)
-                D--
-                
-                state.basket[itemIndex].data.Qty=D
-              }
-            },
+                  var itemIndex =state.basket.findIndex((item)=>item.id===action.payload.id)
+
+                  console.log('The itemIndex is',itemIndex)
+
+                  if((action.payload.data.qty-1)===0){
+                    state.basket.splice(itemIndex,1)
+                  }else{
+                    
+                      var D=state.basket[itemIndex].data.qty
+                       D--
+                       state.basket[itemIndex].data.qty=D
+                     }   
+                      },
                 
   
 
