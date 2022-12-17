@@ -7,7 +7,7 @@ import {setActiveCat} from '../Redux/Slice'
 
 const Categories = () => {
   const dispatch=useDispatch()
- const [active, setActive] = useState('');
+ const [active, setActive] = useState(null);
 
 
   return (
@@ -17,7 +17,7 @@ const Categories = () => {
                 <div
                  key={item?.id}  
                 onClick={()=>{setActive(item?.name)
-                  dispatch(setActiveCat(item?.name))}} 
+                  dispatch(setActiveCat(item?.urlParamName))}} 
                  className={` w-28 h-24 cursor-pointer rounded-lg flex flex-col items-center justify-center  ${active!==item?.name?'backdrop-blur-md bg-white shadow-sm hover:bg-red-500':'bg-red-500 '} `}>
                   <div 
                   className={`rounded-full  p-2  ${active==item?.name? 'bg-white':'bg-red-500'}`}>

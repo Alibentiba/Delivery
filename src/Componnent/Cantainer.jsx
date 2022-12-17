@@ -1,38 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import {IoFastFood} from 'react-icons/io5';
+import React, {useState } from 'react'
 import { categories } from '../Utils/Data';
 import Laoder from './Laoder';
-import {RiUploadCloud2Line,RiDeleteBin7Fill} from 'react-icons/ri';
+import {RiUploadCloud2Line} from 'react-icons/ri';
 import {deleteObject,getDownloadURL,ref,uploadBytesResumable,} from "firebase/storage";
   import { storage,db } from "../firebase";
-  import { collection, getDocs ,addDoc} from "firebase/firestore"; 
-  import {fetchTostat} from '../Redux/Slice'
-  import { useDispatch, useSelector } from 'react-redux'
-
-
-
-
-
-
-
+  import { collection ,addDoc} from "firebase/firestore"; 
 
 
 const Cantainer = () => {
-    const dispatch =useDispatch()
     const [title, setTitle] = useState('');
-    const [category, setcategorie] = useState('');
+    const [category, setcategorie] = useState();
     const [isLaoding, setisLaoding] = useState(false);
     const [imageAsset, setimageAsset] = useState(null);
     const [calories, setcalories] = useState('');
     const [price, setprice] = useState('');
-    const [Products, setProducts] = useState(null);
-
-
+  
 
 
   const PutNull =()=>{
     setTitle('')
-    setcategorie('')
     setcalories('')
     setimageAsset(null)
     setprice('')
@@ -50,8 +36,7 @@ const Cantainer = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const uploadProgress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const uploadProgress =(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       },
       (error) => {
         console.log(error);
@@ -91,6 +76,9 @@ const Cantainer = () => {
       const saveDetails = (e) => {
         if(imageAsset){
             console.log('The sdsdqdfqsd',imageAsset)
+            console.log('The Category is',category)
+
+
             if (title || calories || imageAsset || price || category) {
   
                 const data = {
@@ -104,18 +92,28 @@ const Cantainer = () => {
                 }
                 e.preventDefault();
                     addDoc(collection(db,"Products"),data)}
-                
-                    setTimeout(() =>{PutNull()},1000)
-                }
 
-        
-          }
+
+
+                  
+                    setTimeout(() =>{
+                    PutNull()},1000)
+
+                    
+                      
+                }}
+
+      
+
+
+
+
+
+
   
   return (
 <div className='w-full mt-[5.5rem] flex  items-start justify-center h-auto p-2 bg-gray-100'>
     <div className='w-full h-screen flex flex-col items-center justify-start bg-gray-200  gap-6 rounded-lg p-10 md:w-1/2 md:h-full '>
-
-
 
     <div className='w-full flex flex-col items-start gap-3 justify-start md:flex md:flex-row'>
         
@@ -132,7 +130,7 @@ const Cantainer = () => {
             <option className='w-1/2' value="Other" disabled>Select Categories </option>
             {categories.map((item)=>{
                 return(
-                    <option className='w-1/2 relative z-40 cursor-pointer' key={item.id} value={item.urlParamName}> {item.name}</option>
+                    <option className='w-1/2 relative z-40 cursor-pointer' onClick={()=>{setcategorie(item.name)}} key={item.id} value={item.urlParamName}> {item.name}</option>
                   )})}
         </select>
     </div>
@@ -141,10 +139,6 @@ const Cantainer = () => {
 
     <div className='w-full h-420  flex items-center justify-center rounded-sm border-dotted border-2 border-gray-300 md:h-340'>
         {/* {isLaoding?<Laoder/>:( */}
-
-
-
-     
 
                 { !imageAsset? 
                 
@@ -188,7 +182,7 @@ const Cantainer = () => {
     <div className='w-full  h-auto flex items-start justify-center  gap-2 '>
     <div className='w-1/2  h-auto flex items-center justify-start  gap-2 md:w-full '>
         {/* <IoFastFood className='w-14 h-14 '/> */}
-        <input type="text" placeholder='Calories'
+        <input type="number" placeholder='Calories'
         className='w-full h-20 outline-none border-[0.5px]  border-gray-300 text-2xl  text-gray-800 bg-slate-100 placeholder:text-gray-500 pl-4 rounded-sm '
         value={calories}
         onChange={e=>{setcalories(e.target.value)}}/>
@@ -196,7 +190,7 @@ const Cantainer = () => {
 
      <div  className='w-1/2  h-auto flex items-center justify-start  gap-2 md:w-full '>
         {/* <IoFastFood className='w-14 h-14 '/> */}
-        <input type="text" placeholder='Price'
+        <input type="number" placeholder='Price'
          className='w-full h-20 outline-none border-[0.5px]  border-gray-300 text-2xl  text-gray-800 bg-slate-100 placeholder:text-gray-500 pl-4 rounded-sm '
          value={price}
          onChange={e=>{setprice(e.target.value)}}/>

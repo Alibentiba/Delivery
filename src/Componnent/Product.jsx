@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { IoMdBasket} from 'react-icons/io';
 import {useDispatch } from 'react-redux'
 import {SetTobasket} from '../Redux/Slice'
@@ -14,13 +14,12 @@ const Product = ({id,data:{title,price,calories,imageURL,qty}}) => {
 
                 <div className="flex flex-col items-start justify-start w-1/2 h-full ">
                     <div className="rounded-full  mb-10 mt-2 mr-10 bg-red-500 p-2">
-                    <IoMdBasket onClick={()=>dispatch(SetTobasket({...item,qty:Number(qty)}))} className='text-xl text-white cursor-pointer '/>
+                    <IoMdBasket onClick={()=>dispatch(SetTobasket(item))} className='text-xl text-white cursor-pointer '/>
                 </div>
 
                 <h1 className="w-full text-xl font-semibold  text-left capitalize ">{title}</h1>
                 <p className="w-full text-sm  text-left text-gray-500" >{calories}  calories</p>
                 <p className="w-full text-lg  text-left font-bold ">{price} <span className="text-orange-500 font-semibold">$</span></p>
-                <p className="w-full text-lg  text-left font-bold ">{qty} <span className="text-orange-500 font-semibold">$</span></p>
               </div>
          </div>
 

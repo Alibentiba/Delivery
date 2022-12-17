@@ -20,7 +20,7 @@ const Haeder = () => {
   const Singin = async()=>{
   const auth = getAuth();
   setUser( await signInWithPopup(auth, provider))
-  console.log('The uers is',user)
+  
 }
 
 const LogOut = async()=>{
@@ -28,6 +28,7 @@ const LogOut = async()=>{
   signOut(auth)
   dispatch(Logout())
 }
+var CurentUrl=document.URL
 
  
   return (
@@ -40,7 +41,7 @@ const LogOut = async()=>{
 
           <div className='flex items-center justify-centers gap-10'>
             <ul  className="flex items-center gap-12">
-           <Link to='/ShopingCart'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+           <Link to='/'> <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               Home
             </li>
             </Link>
@@ -60,7 +61,7 @@ const LogOut = async()=>{
 
             {menu && (
               <div className='absolute z-50  h-auto flex flex-col items-start justify-start top-12 left-[-93px]  bg-slate-100 py-0 mt-0 rounded-sm'>
-              {user1 && user1.email ==="bentibaali3@gmail.com"&&(<Link to='/Cantainer'><button className="hover:bg-slate-200 text-black flex w-40 h-14    text-lg font-semibold items-center justify-start px-2  gap-1">New Item <IoMdAdd className='w-8 h-8'/></button>
+              {user1 && CurentUrl==="http://localhost:3000/Admin"&&(<Link to='/Admin'><button className="hover:bg-slate-200 text-black flex w-40 h-14    text-lg font-semibold items-center justify-start px-2  gap-1">New Item <IoMdAdd className='w-8 h-8'/></button>
               </Link>)}
  
               {user1? (<button className="hover:bg-slate-200 text-black flex w-40 h-14   text-lg font-semibold items-center justify-start px-3  gap-7 " onClick={LogOut} >Logout<IoMdLogOut className='w-8 h-8'/></button>)
@@ -116,7 +117,7 @@ const LogOut = async()=>{
               user1 && user1.email ==="bentibaali3@gmail.com"&&(<Link to='/Cantainer'><button className=' hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-3'>New Item <IoMdAdd/></button></Link>
         )}
              <ul  className="flex-col items-center gap-24 ">
-             <Link to='/ShopingCart'> <li className="hover:bg-slate-400 text-black flex w-32  text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">
+             <Link to='/'> <li className="hover:bg-slate-400 text-black flex w-32  text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">
               Home
             </li></Link>
             <li className="hover:bg-slate-400 text-black flex w-32   text-lg font-semibold items-center justify-start px-1 mt-2 gap-4">

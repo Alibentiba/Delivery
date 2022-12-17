@@ -7,6 +7,7 @@ export const Slice = createSlice({
       Products:null,
       ActiveCat:null,
       ActivShoping:false,
+      ProductListlenght:null
      },
    
     reducers: {
@@ -33,18 +34,25 @@ export const Slice = createSlice({
                },
 
                SetTobasket :(state,action) => {
-                console.log('The action py',action.payload)
-                
+        
                 const itemIndex =state.basket.findIndex((item)=>item.id===action.payload.id)
+
               if(itemIndex>=0){
-               var D= parseInt(state.basket[itemIndex].data.qty)
-               D++
-               state.basket[itemIndex].data.qty=D
-            }else{
+                state.basket[itemIndex].data.qty++
+              
+                }else{
                 const temP={...action.payload,qty:1}
                 state.basket.push(temP);
               }
              },
+             
+             
+           getProductListlenght:(state,action) => {
+            state.ProductListlenght=state.Products.lenght
+        },
+            
+             
+             
 
 
 
@@ -55,7 +63,7 @@ export const Slice = createSlice({
 
                   console.log('The itemIndex is',itemIndex)
 
-                  if((action.payload.data.qty-1)===0){
+                  if((action.payload.data.qty)===0){
                     state.basket.splice(itemIndex,1)
                   }else{
                     

@@ -24,66 +24,22 @@ const App = () => {
     data:doc.data()})))})
 
  setProducts(Products?.forEach((element) => {
-    var {id,data:{qty,title,price,calories,imageURL}}=element
+    var{id,data:{title,price,calories,imageURL,qty}}=element
    var  X=parseInt(element.data.qty)
     element= {...element,qty:X}
 
     }))
-  //  if(Products){
-  //   console.log('Test',(typeof Products[0].data.qty))
-
-  //  }
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         if(Products){
-          localStorage.setItem('Products',JSON.stringify(Products));
-          const ProductsLocal = JSON.parse(localStorage.getItem('Products'));
-
-
-
-          dispatch(fetchTostat(ProductsLocal))
-          // Products?.forEach((element) => {
-          //   var {id,data:{qty,title,price,calories,imageURL}}=element
-        
-          //     console.log('type is is,',(typeof qty))
-        
-          //   });
+          localStorage.setItem('Products', JSON.stringify(Products));
         }
-        
-        
-        
-    },[Products])
+      },[LoginA])
 
 
-
-
-
-
-
-
-
-
-
+useEffect(()=>{
+  const Products = JSON.parse(localStorage.getItem('Products'));
+  dispatch(fetchTostat(Products))
+},[App])
 
 
 
@@ -107,7 +63,7 @@ const App = () => {
      <Haeder/>
      <ShopingCart/>
      <Routes>
-      <Route path='/Cantainer' element={<Cantainer/>}/>
+      <Route path='/Admin' element={<Cantainer/>}/>
       <Route path='/' element={<Home/>}/>
       <Route path='/ShopingCart' element={<ShopingCart/>}/>
      </Routes>
