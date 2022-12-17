@@ -7,7 +7,8 @@ export const Slice = createSlice({
       Products:null,
       ActiveCat:null,
       ActivShoping:false,
-      ProductListlenght:null
+      ProductListlenght:null,
+      Total:0
      },
    
     reducers: {
@@ -44,15 +45,19 @@ export const Slice = createSlice({
                 const temP={...action.payload,qty:1}
                 state.basket.push(temP);
               }
-             },
+               
+              },
              
              
            getProductListlenght:(state,action) => {
             state.ProductListlenght=state.Products.lenght
-        },
+              },
             
              
              
+
+
+
 
 
 

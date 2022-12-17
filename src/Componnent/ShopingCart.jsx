@@ -6,21 +6,38 @@ import Caremp from './img/emptyCart.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import {setActivShoping,SetbasketNull,SetTobasket,Dirncer} from '../Redux/Slice'
 import FadeIn from 'react-fade-in';
+import { motion } from "framer-motion";
+
 
 
 const ShopingCart = () => {
+    const [SubTotal , setSubTotal] = useState(0);
     const dispatch=useDispatch()
     var ActiveCart=useSelector(state=>state.userStore.ActivShoping)
     const Basket=useSelector(state=>state.userStore.basket)
     var BasketLength=Basket?.length
+    const ClearCart =()=>{
+    BasketLength=null;
+    dispatch(SetbasketNull([]))}
 
-   const ClearCart =()=>{
-        BasketLength=null;
-        dispatch(SetbasketNull([]))
-    }
+    useEffect(() => {
+       var T=0
+        Basket.forEach( obj => {
+          T=T+(obj.data.price)*(obj.data.qty)
+          })
+          console.log('Total is',T)
+          setSubTotal(T)
+
+    }, [Basket]);
 
 
-    
+
+
+
+
+
+
+
   return (
    
 
@@ -32,11 +49,13 @@ const ShopingCart = () => {
         <div className='w-full bg-gray-700 flex items-center justify-between px-3 py-8 rounded-lg text-white'>
             <FaArrowLeft onClick={()=>{dispatch(setActivShoping(!ActiveCart))}} className='text-2xl cursor-pointer'/>
             <p className='font-semibold text-xl cursor-pointer'>Cart</p>
-            <button 
+             
+            <motion.button
+            whileTap={{ scale: 0.75 }}
               onClick={ClearCart}
               className='flex items-center justify-center gap-1 text-lg text-black bg-gray-100 px-3 py-[6px] rounded-lg'>
               Clear <IoNuclear/>
-            </button>
+            </motion.button>
         </div>
          
        
@@ -65,9 +84,6 @@ const ShopingCart = () => {
                     <p className='bg-slate-600  w-14 h-14 flex items-center justify-center rounded-full p-[2px] cursor-pointer'>{String(qty)}</p>
                     <p className='cursor-pointer'onClick={()=>dispatch(SetTobasket(item))} >+</p>
                 </div>
-
-
-
             </div></FadeIn>)})}
 
         </div>
@@ -77,7 +93,7 @@ const ShopingCart = () => {
             <div className='flex flex-col w-full h-1/2  items-center justify-center border-b-[1px] border-gray-300'>
                 <p className=' text-xl flex items-center py-2 w-full justify-between text-gray-200'>
                     <span>Sub Total</span>
-                    <span>$ 345</span>
+                    <span>$ {SubTotal}</span>
 
                 </p>
                 <p className=' text-xl flex items-center  py-2 w-full justify-between text-gray-200'>
@@ -93,7 +109,7 @@ const ShopingCart = () => {
 
                 <p className=' text-xl font-semibold flex items-center  py-2 w-full justify-between text-white'>
                         <span>Total</span>
-                        <span>$ 322</span>
+                        <span>$ {SubTotal+ 2.4}</span>
                 </p>
                 <button className='bg-orange-400 text-white text-xl py-2 rounded-3xl w-3/4'>
                     Login to check out

@@ -7,6 +7,8 @@ import { getAuth, signInWithPopup,signOut } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux'
 import {Logout,setActivShoping} from '../Redux/Slice'
 import {Link} from 'react-router-dom'
+import { motion } from "framer-motion";
+
 
 
 const Haeder = () => {
@@ -54,7 +56,11 @@ var CurentUrl=document.URL
                 Service</li>
 
             </ul>
-            <IoMdBasket onClick={()=>{dispatch(setActivShoping(true))}} className='text-4xl hover:cursor-pointer text-black'/>
+            <motion.div whileTap={{ scale: 0.75 }} onClick={()=>{dispatch(setActivShoping(true))}} >
+            <IoMdBasket className='text-4xl hover:cursor-pointer text-black'/>
+
+            </motion.div>
+           
             <div className='relative'>
             <img src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu); setTimeout(() =>{setMenu(false)},2000);}}
             alt="Avatar" className='w-10 cursor-pointer rounded-full' />

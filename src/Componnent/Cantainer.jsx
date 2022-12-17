@@ -87,8 +87,8 @@ const Cantainer = () => {
                   imageURL: imageAsset,
                   category: category,
                   calories: calories,
-                  qty:'1',
-                  price: price,
+                  qty:1,
+                  price: Number(price),
                 }
                 e.preventDefault();
                     addDoc(collection(db,"Products"),data)}

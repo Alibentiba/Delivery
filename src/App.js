@@ -10,6 +10,8 @@ import {app, db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore"; 
 import {fetchTostat} from './Redux/Slice'
 import ShopingCart from './Componnent/ShopingCart';
+import { AnimatePresence } from "framer-motion";
+
 
 const App = () => {
   const [Products, setProducts] = useState(null);
@@ -26,7 +28,7 @@ const App = () => {
  setProducts(Products?.forEach((element) => {
     var{id,data:{title,price,calories,imageURL,qty}}=element
    var  X=parseInt(element.data.qty)
-    element= {...element,qty:X}
+    element= {...element,price:price+0,qty:X}
 
     }))
 
@@ -45,6 +47,19 @@ useEffect(()=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Getting User  {The User Info from firebase/Auth}
   useEffect(() => {
     const auth = getAuth();
@@ -57,6 +72,8 @@ useEffect(()=>{
       ))}});}, [dispatch]);
 
   return (
+    <AnimatePresence exitBeforeEnter>
+
     <BrowserRouter>
     <div className='w-screen gap-0  flex-col items-center justify-start bg-Primary'>
       
@@ -69,6 +86,7 @@ useEffect(()=>{
      </Routes>
      </div>
     </BrowserRouter>
+    </AnimatePresence>
 
   )
 }

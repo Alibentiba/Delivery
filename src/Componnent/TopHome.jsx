@@ -5,18 +5,12 @@ import I1 from './img/i1.png'
 import F1 from './img/f1.png'
 import c3 from './img/c3.png'
 import Fi1 from './img/fi1.png'
-import SliderComponent from './SliderComponent'
-import { useDispatch, useSelector } from 'react-redux'
-import Categories from './Categories'
+import { motion } from "framer-motion";
+
 
 
 const TopHome = () => {
-
-
   return (
-    
-
-
     <div className='grid gap-y-1  grid-cols-1 md:grid-cols-2 md:h-1/2 py-0 px-4'>
         <div className='px-4 flex flex-col items-start justify-start gap-1 pb-0  h-[800px] md:h-[700px]'>
             
@@ -35,7 +29,7 @@ const TopHome = () => {
                      delivers food to a customer. An order is
                       typically made either through a restaurant 
                       </p>
-                      <button className='bg-orange-400 w-full h-12 rounded-md  text-lg  md:w-1/4 hover:bg-orange-300 '>Order Now</button>
+                      < motion.button whileTap={{ scale: 0.75 }} className='bg-orange-400 w-full h-12 rounded-md  text-lg  md:w-1/4 hover:bg-orange-300 '>Order Now</motion.button>
         </div>
 
         <div className='flex items-start justify-end  h-[780px] md:h-[650px]'>
