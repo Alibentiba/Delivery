@@ -11,7 +11,7 @@ const Product = ({id,data:{title,price,calories,imageURL,qty}}) => {
   return ( 
     <div key={id}  className="flex items-center justify-center w-[300px] h-full rounded-lg backdrop-blur-md bg-cardOverlay shadow-md">
                 <div className="w-full h-full relative bottom-20  rounded-xl flex items-center justify-center px-3">
-                  <img src={imageURL} className='h-[124px]' />
+                  <img src={imageURL} alt='imageURL' className='h-[124px]' />
                 </div>
 
                 <div className="flex flex-col items-start justify-start w-1/2 h-full ">

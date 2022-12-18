@@ -1,12 +1,12 @@
 import React, { useEffect,useState} from 'react'
 import Haeder from './Componnent/Haeder'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {LoginA} from './Redux/Slice'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Cantainer from './Componnent/Cantainer';
 import Home from './Componnent/Home';
-import {app, db } from "./firebase";
+import {db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore"; 
 import {fetchTostat} from './Redux/Slice'
 import ShopingCart from './Componnent/ShopingCart';
@@ -19,14 +19,14 @@ const App = () => {
   const dispatch =useDispatch()
   // Getting Data {The List Product from firebase/fireStor}
   useEffect(()=>{
-    const colRef= collection(db,'Products')
-    getDocs(colRef).then((snap)=>{setProducts(snap.docs.map((doc)=>(
-    {id:doc.id,
-    data:doc.data()})))})
- setProducts(Products?.forEach((element) => {
-    var{id,data:{title,price,calories,imageURL,qty}}=element
-   var  X=parseInt(element.data.qty)
-    element= {...element,price:price+0,qty:X}
+          const colRef= collection(db,'Products')
+          getDocs(colRef).then((snap)=>{setProducts(snap.docs.map((doc)=>(
+          {id:doc.id,
+          data:doc.data()})))})
+          setProducts(Products?.forEach((element) => {
+          var{id,data:{title,price,calories,imageURL,qty}}=element
+          var  X=parseInt(element.data.qty)
+          element= {...element,price:price+0,qty:X}
 
     }))
 
@@ -35,36 +35,10 @@ const App = () => {
         }
       },[])
 
-
-
-
-
-
-
-
-
-
 useEffect(()=>{
   const Products = JSON.parse(localStorage.getItem('Products'));
   dispatch(fetchTostat(Products))
 },[dispatch])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // Getting User  {The User Info from firebase/Auth}
   useEffect(() => {
@@ -76,6 +50,7 @@ useEffect(()=>{
         email:user.email,
         photoURL:user.photoURL}
       ))}});}, [dispatch]);
+
 
   return (
     <AnimatePresence exitBeforeEnter>

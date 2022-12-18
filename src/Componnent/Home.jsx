@@ -2,14 +2,11 @@ import React from 'react'
 import Categories from './Categories'
 import SliderComponent from './SliderComponent'
 import TopHome from './TopHome'
-import {useDispatch, useSelector } from 'react-redux'
 import ProductsLsit from './ProductsLsit'
 import Footer from './Footer'
 
 
 const Home = () => {
-  const Dispatch=useDispatch()
-  const SliceProducts=useSelector(state=>state.userStore.Products)
 
   return (
     <div className='flex flex-col items-start justify-start mt-[6rem] gap-0 py-0'>

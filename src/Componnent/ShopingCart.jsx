@@ -15,9 +15,6 @@ const ShopingCart = () => {
     const dispatch=useDispatch()
     var ActiveCart=useSelector(state=>state.userStore.ActivShoping)
     var userSlice=useSelector(state=>state.userStore.user)
-    const [user,setUser]=useState(null)
-
-
     const Basket=useSelector(state=>state.userStore.basket)
     var BasketLength=Basket?.length
     const ClearCart =()=>{
@@ -34,7 +31,7 @@ const ShopingCart = () => {
 
     const Singin = async()=>{
     const auth = getAuth();
-    setUser( await signInWithPopup(auth, provider))
+     await signInWithPopup(auth, provider)
     
   }
 

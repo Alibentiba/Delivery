@@ -1,10 +1,9 @@
 import React, {useState } from 'react'
 import { categories } from '../Utils/Data';
-import Laoder from './Laoder';
 import {RiUploadCloud2Line} from 'react-icons/ri';
 import {deleteObject,getDownloadURL,ref,uploadBytesResumable,} from "firebase/storage";
-  import { storage,db } from "../firebase";
-  import { collection ,addDoc} from "firebase/firestore"; 
+import { storage,db } from "../firebase";
+import { collection ,addDoc} from "firebase/firestore"; 
 
 
 const Cantainer = () => {
@@ -30,8 +29,8 @@ const Cantainer = () => {
         
      const uploadImage = (e) => {
      const imageFile = e.target.files[0];
-    const storageRef = ref(storage, `images/${Math.floor(Math.random() * 100)}-${imageFile.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+     const storageRef = ref(storage, `images/${Math.floor(Math.random() * 100)}-${imageFile.name}`);
+     const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
     uploadTask.on(
       "state_changed",
@@ -67,11 +66,6 @@ const Cantainer = () => {
       setTimeout(() =>4000);
     });
   };
-   
-    
-
-  var X=1
-
 
       const saveDetails = (e) => {
         if(imageAsset){

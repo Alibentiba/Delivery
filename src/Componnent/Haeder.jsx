@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Logo from './img/logo.png'
 import { IoMdBasket,IoMdAdd,IoMdLogOut,IoMdLogIn} from 'react-icons/io';
 import avatar from './img/avatar.png'
 import {provider} from '../firebase'
@@ -11,17 +10,15 @@ import { motion } from "framer-motion";
 
 
 
-const Haeder = () => {
-  const [user,setUser]=useState(null)
-  const [menu,setMenu]=useState(false)
+ const Haeder = () => {
 
+  const [menu,setMenu]=useState(false)
   var user1=useSelector(state=>state.userStore.user)
   var basket=useSelector(state=>state.userStore.basket)
-
   const dispatch=useDispatch()
   const Singin = async()=>{
   const auth = getAuth();
-  setUser( await signInWithPopup(auth, provider))
+  await signInWithPopup(auth, provider)
   
 }
 
