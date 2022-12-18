@@ -122,7 +122,7 @@ function SamplePrevArrow(props) {
                 <div  className="flex items-center justify-center w-full h-full rounded-lg backdrop-blur-md bg-cardOverlay shadow-md">
                
              <div className="w-full h-full  rounded-xl flex items-center justify-center px-3">
-               <img src={imageURL} className='h-full' />
+               <img src={imageURL} alt='sdf' className='h-full' />
              </div>
 
               <div className="flex flex-col items-start justify-start w-1/2 h-full">
