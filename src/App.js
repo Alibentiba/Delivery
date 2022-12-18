@@ -33,7 +33,7 @@ const App = () => {
         if(Products){
           localStorage.setItem('Products', JSON.stringify(Products));
         }
-      },[])
+      },[Products])
 
 useEffect(()=>{
   const Products = JSON.parse(localStorage.getItem('Products'));
@@ -53,7 +53,7 @@ useEffect(()=>{
 
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence  exit={{ opacity: 0 }}>
 
     <BrowserRouter>
     <div className='w-screen gap-0  flex-col items-center justify-start bg-Primary'>

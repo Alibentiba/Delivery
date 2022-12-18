@@ -9,12 +9,10 @@ const ProductsLsit = () => {
     var SliceProduct=useSelector(state=>state.userStore.Products)
     var ActiveCatt=useSelector(state=>state.userStore.ActiveCat)
     const [ProductList, setProductList] = useState(SliceProduct);
-    console.log('sdkfhsdkjfhsqdkdjfqsklqj',ProductList)
 
 useEffect(() => {
   if(ActiveCatt==='All'){
     setProductList(SliceProduct)
-    console.log('The List of Product list is ',ProductList)
 
   }else{
     setProductList(SliceProduct?.filter( (obj)=>{     
