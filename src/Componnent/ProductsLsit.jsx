@@ -33,13 +33,14 @@ useEffect(() => {
 <div className='w-full grid min-h-[30rem] h-auto  grid-cols-1 px-5 gap-y-[1.5rem] md:grid-cols-4 md:px-2   py-2'>
 {!ProductList?.length? 
 <div>
-  <p className=' flex w-screen gap-3  items-center justify-center text-2xl font-semibold'> Sorry No {ActiveCatt} items   <CiFaceSmile/>
+  <p className=' flex w-screen gap-3  items-center justify-center text-2xl font-semibold'> 
+  Sorry No {ActiveCatt} items  
+   <CiFaceSmile className='text-orange-600 text-3xl'/>
   </p>
-  </div>:<>
-
- {ProductList?.map((item,index)=>{  
+  </div>:
+  <>{ProductList?.map((item,index)=>{  
    return(
-      <div key={index}  className="w-[340px] h-[220px] flex  flex-row items-start justify-start p-2  hover:transition-transform	 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-500" >
+      <div key={index} className="w-[340px] h-[220px] flex  flex-row items-start justify-start p-2  hover:transition-transform	 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-500" >
         <FadeIn>
          <Product {...item}/>
          </FadeIn>
