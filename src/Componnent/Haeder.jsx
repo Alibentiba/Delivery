@@ -37,8 +37,8 @@ var CurentUrl=document.URL
     <div className=' fixed top-0 z-50 w-screen  p-6 px-16 flex items-center justify-between bg-Primary '>
         <div className='hidden md:flex w-full h-full items-center justify-between'>
 
-          <div className='flex items-center justify-center gap-2'>
-          <Link to='/'><img src={Logo} alt="Logo" className='w-10 object-cover' /></Link>
+          <div className='flex items-center justify-center '>
+          <Link to='/'><img src='https://www.shutterstock.com/image-vector/running-man-postal-box-logomessenger-260nw-293379359.jpg' alt="Logo" className='w-16 object-contain' /></Link>
           </div>
 
           <div className='flex items-center justify-centers gap-10'>
@@ -62,7 +62,7 @@ var CurentUrl=document.URL
             </motion.div>
            
             <div className='relative'>
-            <img src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu); setTimeout(() =>{setMenu(false)},2000);}}
+            <motion.img whileTap={{ scale: 0.75 }} src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu); setTimeout(() =>{setMenu(false)},2000);}}
             alt="Avatar" className='w-10 cursor-pointer rounded-full' />
 
             {menu && (

@@ -5,16 +5,14 @@ import {getStorage} from 'firebase/storage'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCv5Ec8WquRjMGp-BDdqId_z6pr6JnPzwY",
-  authDomain: "delivery-a8d99.firebaseapp.com",
-  databaseURL: "https://delivery-a8d99-default-rtdb.firebaseio.com",
-  projectId: "delivery-a8d99",
-  storageBucket: "delivery-a8d99.appspot.com",
-  messagingSenderId: "890142457633",
-  appId: "1:890142457633:web:1f58c4e73d8a07b64dc860",
-  measurementId: "G-R29SRHGB7Y"
+  apiKey: "AIzaSyA9HkYLRkMyDDdku-eWUROAOBLoXOkSSQw",
+  authDomain: "delivering-72385.firebaseapp.com",
+  projectId: "delivering-72385",
+  storageBucket: "delivering-72385.appspot.com",
+  messagingSenderId: "703954036294",
+  appId: "1:703954036294:web:4aa4ecf6b55d4e27610c47",
+  measurementId: "G-DLLDVG7ZCY"
 };
-
   const app=getApps.length>0?getApp():initializeApp(firebaseConfig)
   const storage =getStorage(app)
   const db =getFirestore(app)

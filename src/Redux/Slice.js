@@ -5,7 +5,7 @@ export const Slice = createSlice({
       basket:[],
       user:null,
       Products:null,
-      ActiveCat:null,
+      ActiveCat:'All',
       ActivShoping:false,
       ProductListlenght:null,
       Total:0

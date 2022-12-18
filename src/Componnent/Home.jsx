@@ -17,7 +17,7 @@ const Home = () => {
       <SliderComponent/>
       <Categories/>
       <p 
-      className='w-full h-28 text-3xl font-semibold pl-10 before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-[35.3rem] before:left-[37px] before:bg-gradient-to-tr from-orange-400 to-orange-600 transition-all ease-in-out duration-100'>
+      className='w-full h-28 text-3xl font-semibold pl-10 before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-[112.5rem] before:left-[37px] before:bg-gradient-to-tr from-orange-400 to-orange-600 transition-all ease-in-out duration-100 md:before:-bottom-[37.5rem]'>
         Our Hot Dishes</p>
       <ProductsLsit />
       <Footer/>

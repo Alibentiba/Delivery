@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa';
 import { IoNuclear } from 'react-icons/io5';
-import c2 from './img/c2.png'
 import Caremp from './img/emptyCart.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import {setActivShoping,SetbasketNull,SetTobasket,Dirncer} from '../Redux/Slice'
+import {setActivShoping,SetbasketNull,SetTobasket,Dirncer, Logout} from '../Redux/Slice'
 import FadeIn from 'react-fade-in';
 import { motion } from "framer-motion";
-
+import { getAuth, signInWithPopup, signOut } from 'firebase/auth';
+import {provider} from '../firebase'
 
 
 const ShopingCart = () => {
     const [SubTotal , setSubTotal] = useState(0);
     const dispatch=useDispatch()
     var ActiveCart=useSelector(state=>state.userStore.ActivShoping)
+    var userSlice=useSelector(state=>state.userStore.user)
+    const [user,setUser]=useState(null)
+
+
     const Basket=useSelector(state=>state.userStore.basket)
     var BasketLength=Basket?.length
     const ClearCart =()=>{
@@ -25,27 +29,30 @@ const ShopingCart = () => {
         Basket.forEach( obj => {
           T=T+(obj.data.price)*(obj.data.qty)
           })
-          console.log('Total is',T)
           setSubTotal(T)
-
     }, [Basket]);
 
+    const Singin = async()=>{
+    const auth = getAuth();
+    setUser( await signInWithPopup(auth, provider))
+    
+  }
 
-
-
-
+  const LogOut = async()=>{
+    const auth = getAuth();
+    signOut(auth)
+    dispatch(Logout())
+  }
 
 
 
 
   return (
    
-
-    
     <div className={`fixed right-0 z-50 top-0 delay-6000 ease-linear ${ActiveCart? 'visible':'hidden'}`}>
-{BasketLength?
+     {BasketLength?
  
-( <FadeIn><div className='w-screen bg-cartBg h-screen px-1 py-1  flex flex-col items-center justify-start md:w-[30rem]'>
+      (<FadeIn><div className='w-screen bg-cartBg h-screen px-1 py-1  flex flex-col items-center justify-start md:w-[30rem]'>
         <div className='w-full bg-gray-700 flex items-center justify-between px-3 py-8 rounded-lg text-white'>
             <FaArrowLeft onClick={()=>{dispatch(setActivShoping(!ActiveCart))}} className='text-2xl cursor-pointer'/>
             <p className='font-semibold text-xl cursor-pointer'>Cart</p>
@@ -111,9 +118,19 @@ const ShopingCart = () => {
                         <span>Total</span>
                         <span>$ {SubTotal+ 2.4}</span>
                 </p>
-                <button className='bg-orange-400 text-white text-xl py-2 rounded-3xl w-3/4'>
+
+         {!userSlice?
+                ( <button onClick={Singin} className='bg-orange-400 text-white text-xl py-2 rounded-3xl w-3/4'>
                     Login to check out
-                </button>
+                </button>):
+               ( <button onClick={LogOut} className='bg-orange-400 text-white text-xl py-2 rounded-3xl w-3/4'>
+               Logout
+           </button>)
+
+                 }
+
+
+                
 
             </div>
         </div>

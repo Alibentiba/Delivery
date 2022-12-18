@@ -19,12 +19,10 @@ const App = () => {
   const dispatch =useDispatch()
   // Getting Data {The List Product from firebase/fireStor}
   useEffect(()=>{
-  
     const colRef= collection(db,'Products')
     getDocs(colRef).then((snap)=>{setProducts(snap.docs.map((doc)=>(
     {id:doc.id,
     data:doc.data()})))})
-
  setProducts(Products?.forEach((element) => {
     var{id,data:{title,price,calories,imageURL,qty}}=element
    var  X=parseInt(element.data.qty)
@@ -35,13 +33,21 @@ const App = () => {
         if(Products){
           localStorage.setItem('Products', JSON.stringify(Products));
         }
-      },[LoginA])
+      },[])
+
+
+
+
+
+
+
+
 
 
 useEffect(()=>{
   const Products = JSON.parse(localStorage.getItem('Products'));
   dispatch(fetchTostat(Products))
-},[App])
+},[dispatch])
 
 
 

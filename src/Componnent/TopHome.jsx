@@ -29,7 +29,7 @@ const TopHome = () => {
                      delivers food to a customer. An order is
                       typically made either through a restaurant 
                       </p>
-                      < motion.button whileTap={{ scale: 0.75 }} className='bg-orange-400 w-full h-12 rounded-md  text-lg  md:w-1/4 hover:bg-orange-300 '>Order Now</motion.button>
+                      < motion.button whileTap={{ scale: 0.75 }} className='bg-orange-400 w-full h-12 rounded-md text-white font-semibold text-lg  md:w-1/4 hover:bg-orange-300 '>Order Now</motion.button>
         </div>
 
         <div className='flex items-start justify-end  h-[780px] md:h-[650px]'>

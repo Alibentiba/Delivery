@@ -109,7 +109,7 @@ function SamplePrevArrow(props) {
     };
     return (
       <div className=" h-[300px] gap-0 w-screen pl-[20px] pr-12    flex flex-col items-start justify-start ">
-          <p className='text-3xl  px-12 font-semibold w-full text-left after:border-solid before:absolute before:rounded-lg before:content before:w-[22rem] before:h-1 before:-bottom-[3.5rem] before:left-[65px] before:bg-gradient-to-tr from-orange-400 to-orange-600 transition-all ease-in-out duration-100 '>Our Fresh & Healthy Fruits</p>
+          <p className='text-3xl  px-12 font-semibold w-full text-left after:border-solid before:absolute before:rounded-lg before:content before:w-[16rem] before:h-1 before:-bottom-[68.5rem] before:left-[65px] before:bg-gradient-to-tr from-orange-400 to-orange-600 transition-all ease-in-out duration-100 md:before:-bottom-[5.5rem]'>Our Fresh & Healthy Fruits</p>
 
         <Slider {...settings} className=" h-[270px] w-full mx-3 ">
           {FruitsList?.map(({id,data:{title,price,calories,imageURL,qty}})=>{
