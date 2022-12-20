@@ -57,7 +57,6 @@ var CurentUrl=document.URL
             <IoMdBasket className='text-4xl hover:cursor-pointer text-black'/>
 
             </motion.div>
-           
             <div className='relative'>
             <motion.img whileTap={{ scale: 0.75 }} src={user1? user1.photoURL :avatar}  onClick={()=>{setMenu(!menu); setTimeout(() =>{setMenu(false)},2000);}}
             alt="Avatar" className='w-10 cursor-pointer rounded-full' />
