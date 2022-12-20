@@ -64,7 +64,7 @@ var CurentUrl=document.URL
 
             {menu && (
               <div className='absolute z-50  h-auto flex flex-col items-start justify-start top-12 left-[-93px]  bg-slate-100 py-0 mt-0 rounded-sm'>
-              {user1 && CurentUrl==="http://localhost:3000/Admin"&&(<Link to='/Admin'><button className="hover:bg-slate-200 text-black flex w-40 h-14    text-lg font-semibold items-center justify-start px-2  gap-1">New Item <IoMdAdd className='w-8 h-8'/></button>
+              {user1 && CurentUrl==="https://main--bespoke-pithivier-6beff9.netlify.app//Admin"&&(<Link to='/Admin'><button className="hover:bg-slate-200 text-black flex w-40 h-14    text-lg font-semibold items-center justify-start px-2  gap-1">New Item <IoMdAdd className='w-8 h-8'/></button>
               </Link>)}
  
               {user1? (<button className="hover:bg-slate-200 text-black flex w-40 h-14   text-lg font-semibold items-center justify-start px-3  gap-7 " onClick={LogOut} >Logout<IoMdLogOut className='w-8 h-8'/></button>)

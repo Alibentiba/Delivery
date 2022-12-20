@@ -24,9 +24,6 @@ useEffect(() => {
 }, [SliceProduct,ActiveCatt]);
 
 
-   
-    
-
   return (
 <div className='w-full grid min-h-[30rem] h-auto  grid-cols-1 px-5 gap-y-[1.5rem] md:grid-cols-4 md:px-2   py-2'>
 {!ProductList?.length? 
